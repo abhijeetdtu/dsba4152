@@ -17,6 +17,11 @@ applying them to new and existing datasets.
       - Sophisticated supervised classification systems increasingly rely on machine learning techniques. A critical input to these and other methods is the availability of training data on the variable of interest that assigns ground truth values to sample
 sites. For example, delineating imaged urban neighborhoods as residential, or even more specifically as slums, requires first providing a set of areas pre-defined as slums by other means. Doing so well requires a training dataset that reflects the full diversity of distinct neighborhoods within the category of slums. This is especially challenging when the object of interest is heterogeneous or imprecisely defined.
 
+
+## Project Flow
+
+![image](https://user-images.githubusercontent.com/6872080/96283614-77945980-0faa-11eb-8ac4-d1333c633f8b.png)
+
 * Earh py errors
 - install depenedencies individually using PIP
 - https://github.com/azavea/raster-vision/issues/518
