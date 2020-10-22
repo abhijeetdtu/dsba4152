@@ -34,7 +34,21 @@ African countries is very rare. At current survey frequencies, we calculate that
 
 - [Overview](https://carpentries-incubator.github.io/geospatial-python/aio/index.html)
 
-* Earh py errors
-- install depenedencies individually using PIP
-- https://github.com/azavea/raster-vision/issues/518
-- https://www.lfd.uci.edu/~gohlke/pythonlibs/#rasterio
+
+## Setting up
+
+Run the following from the root of the cloned repository
+
+1. Download tar files
+
+`python -m dsba4152.utils.v4composite_downloader --dest PATH_TO_FOLDER`
+
+2. Untar the files
+
+`python -m dsba4152.utils.untar --source PATH_TO_FOLDER --dest PATH_TO_FOLDER2`
+
+3. Unzip the files
+
+This needs winrar installed and add it to environment variables - typically in c:\program files\winrar
+
+`python -m dsba4152.utils.untar --source PATH_TO_FOLDER2 --dest PATH_TO_FOLDER3 --tar-format .gz --re v4b_web.avg_vis.tif`
