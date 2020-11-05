@@ -4,6 +4,19 @@
 
 ## Getting Started
 
+**Consider an unlikely problem: finding the poor.**
+
+Even in a world riddled with poverty, nearly every government, nonprofit and aid agency struggles with this issue.  
+
+Proxy for finding the poor can be basic economic variables like gross domestic product.
+But the problem is that these numbers can be unreliable in countries where the statistical infrastructure is weak, the informal businesses do not want to be tracked and the numbers may be manipulated.[DEATON & HESTON]
+
+It is very difficult to randomly sample people in the rural areas of Bihar in India or in a slum like Kibera in Nairobi, Kenya, where even just mapping the streets is its own project.[NYT]
+
+In most countries GDP numbers are not available on any consistent basis at the subnational level. Much of the interesting variation in economic growth takes place within, rather than between, countries and that is what can help us with our original problem of poverty.[HENDERSON]
+
+Computer vision can help by using Satellite images with Nighttime luminosity. This tells us not just about electrification but also about economic activity more broadly, and statistical work shows it reliably correlates with economic performance. [HENDERSON]
+
 ### Literature Review
 
 - [A Primer on Remote Sensing For Economists](https://olc.worldbank.org/system/files/Primer_Satellite%20Data_Econ.pdf)
@@ -25,15 +38,19 @@ African countries is very rare. At current survey frequencies, we calculate that
     - [Source : Yeh, Perez Et al](https://www.nature.com/articles/s41467-020-16185-w.pdf)
 
 
-## Project Flow
-
-![image](https://user-images.githubusercontent.com/6872080/96283614-77945980-0faa-11eb-8ac4-d1333c633f8b.png)
-
-
 ## Geoprocessing In Python
 
 - [Overview](https://carpentries-incubator.github.io/geospatial-python/aio/index.html)
 
+
+## Project Flow
+
+![image](https://user-images.githubusercontent.com/6872080/96283614-77945980-0faa-11eb-8ac4-d1333c633f8b.png)
+
+1. Download Year wise image tars
+2. Untar the images
+3. For each of the selected country subset the image to that country
+4. Perform Data augmentation
 
 ## Setting up
 
