@@ -3,14 +3,21 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+import cv2
+
+from PIL import Image
+
+Image.MAX_IMAGE_PIXELS = None
 
 class GetTestTrain:
 
-    def __init__(self, root_path ,gdp_csv_path, selector=None):
+    def __init__(self, root_path ,gdp_csv_path, selector=None ,resize = False ,resize_shape=(128,128)):
 
         self.root_path = root_path
         self.gdp_csv_path = gdp_csv_path
         self.selector = selector
+        self.resize_shape = resize_shape
+        self.resize =resize
 
 
     def get_img_paths(self):
@@ -47,7 +54,15 @@ class GetTestTrain:
         img_path_df = self.get_img_paths()
         gdp = self.get_gdp_data()
         merged_df = pd.merge(img_path_df, gdp , on=["code" , "year"])
-        imgs = merged_df.apply(lambda row  : plt.imread(self.root_path + row["path"]),axis=1)
+        #imgs = merged_df.apply(lambda row  : plt.imread(self.root_path + row["path"]),axis=1)
+        imgs = []
+        for name,row in merged_df.iterrows():
+            #print(name,row) # memory explosion when using df.apply
+            im = plt.imread(self.root_path + row["path"])
+            if self.resize:
+                im = cv2.resize(im , self.resize_shape , cv2.INTER_CUBIC)
+            imgs.append(im)
+            #imgs = imgs.apply(lambda im :)
         y = merged_df["gdp"].values
         years = merged_df["year"].values
-        return np.array(list(imgs.values)) , y, years
+        return np.array(imgs) , y, years
