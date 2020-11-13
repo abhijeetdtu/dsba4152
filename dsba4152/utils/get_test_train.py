@@ -63,6 +63,7 @@ class GetTestTrain:
                 im = cv2.resize(im , self.resize_shape , cv2.INTER_CUBIC)
             imgs.append(im)
             #imgs = imgs.apply(lambda im :)
-        y = merged_df["gdp"].values
+        y = merged_df["gdp"]
         years = merged_df["year"].values
-        return np.array(imgs) , y, years
+        code = merged_df["code"]
+        return np.array(imgs) , y, years , code
