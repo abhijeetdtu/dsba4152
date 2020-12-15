@@ -2,6 +2,34 @@
 ![image](/web/static/siteimg/overall_working.gif)
 # Computer Vision : Using Satellite images to Predict Economic Indicators
 
+
+## Repository Overview
+
+|Path|Information|Notes|
+|---|---|---|
+|./data_c|contains `shapefiles` and `gdp` related information||
+|./dsba4152|||
+|./dsba4152/Notebook|Contains all the `JUpyter Notebooks`||
+||Subsetting Raster Images.ipynb|How to subset original raster images|
+||Subnational Subsetting.ipynb|How to extract countries using Shapefiles|
+||Data Augmentation.ipynb|How to augment images using rotation and flips|
+||Initial Exploratory Analysis.ipynb| EDA file looking at the data|
+||Copy_of_Baseline_Satimg.ipynb| Baseline Deep learning Model|
+||Mixed_Data_Model (2).ipynb| Final Deep learning Model - Based on Mixed Data inputs|
+|./dsba4152/utils|Contains utility functions used in the notebooks||
+|./preview/|Contains sample results of data augmentation||
+|./unittests/|Contains unittests for geo processing utility file||
+|./web/|Contains Flask based web app for deploying model||
+||static| Contains images, javascript and css|
+||templates| Contains html views|
+||app.py| Flask App|
+||model_helper.py| Loading Saved model|
+
+
+## Kaggle Dataset
+
+All our images have been uploaded to `Kaggle` as a dataset and are available [here](https://www.kaggle.com/abhijeetdtu/country-nightlight-dataset)
+
 ## Getting Started
 
 **Consider an unlikely problem: finding the poor.**
