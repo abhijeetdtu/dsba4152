@@ -15,8 +15,9 @@ from dsba4152.utils.config import Config
 
 class Helpers:
 
-    def __init__(self):
+    def __init__(self , extraction_mode):
         self.cache = {}
+        self.extrction_mode = extraction_mode
 
     def prepare_shape_reverse_index(self
     , path_to_shape_file=Config.shape_geopkg
@@ -71,6 +72,17 @@ class Helpers:
         else:
             logging.log(logging.WARNING , "Reverse Index Does Not Exist.Creating")
             return self.prepare_shape_reverse_index()
+
+    def subset_region(self,composite_img, id):
+        from dsba4152.utils.sqlite_access import GeoPKG
+        if id in self.cache:
+            shape = self.cache[id]
+        else:
+            shape = GeoPKG().get_region_geom(self.extrction_mode , id , composite_img.crs.data)
+            self.cache[id] = shape
+        #print(shape)
+        out_image, out_transform = rasterio.mask.mask(composite_img, shape, crop=True)
+        return out_image
 
     def subset_country(self,composite_img, country_id ):
         from dsba4152.utils.sqlite_access import GeoPKG

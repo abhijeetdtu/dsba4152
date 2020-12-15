@@ -45,7 +45,7 @@ class CountryExtractor:
                 if not os.path.exists(op):
                     print(f"--- Country - {country}")
                     try:
-                        subimg = self.helper.subset_country(image , country)
+                        subimg = self.helper.subset_region(image , country)
                         print(subimg.shape)
                         png.from_array(subimg[0,:,:], 'L').save(op)
                     except Exception as e:
@@ -87,5 +87,5 @@ if __name__ == "__main__":
     parser.add_argument("--re" , default=Config.v4composite_suffix)
 
     args = parser.parse_args()
-    helper = Helpers()
+    helper = Helpers(extraction_mode="COUNTRY")
     CountryExtractor(helper, args.source , args.dest , Config.COUNTRIES_TO_KEEP , args.re , args).Extract()

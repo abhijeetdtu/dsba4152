@@ -1,3 +1,5 @@
+import pathlib
+import os
 
 class Config:
     composite_download_dir = "F:\\Data\\satimages\\v4composite"
@@ -10,3 +12,6 @@ class Config:
     COUNTRIES_TO_KEEP = ["IND" , "CHN" , "BGD" , "USA" , "DEU" , "FRA" , "GBR" , "JPN" , "VNM" , "RUS" , "AUS" , "BRA" , "MEX"]
 
     v4composite_suffix = "web.avg_vis.tif"
+
+    india_shape_file_folder = os.path.join(pathlib.Path(".").parent.parent.parent.absolute() , "data_c" , "india_shp","India_Districts_ADM2_GADM.shp")
+    

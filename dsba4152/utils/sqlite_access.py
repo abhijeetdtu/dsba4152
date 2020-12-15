@@ -24,6 +24,12 @@ class GeoPKG(metaclass=Singleton):
     def __init__(self):
         self.conn = sqlite3.connect(Config.shape_geopkg)
 
+    def get_region_geom(self, mode , id , crs):
+        if mode == "COUNTRY":
+            return self.get_country_geom(id , crs)
+        else:
+            return self.get_state_geom(id)
+
     def get_country_geom(self, country_gid ,crs):
         countries_gdf = geopandas.read_file(Config.shape_geopkg ,  mask=GeoPKG.GDF_MASK[GeoPKG.GDF_MASK.iso_a3==country_gid])
         #print(json.loads(countries_gdf["geometry"].to_json()))
@@ -32,6 +38,16 @@ class GeoPKG(metaclass=Singleton):
         return countries_gdf["geometry"].apply(mapping).values
         #return [f['geometry'] for f in json.loads(countries_gdf.to_json())['features']]
 
+    def get_state_geom(self , state_id ):
+        gdf = geopandas.read_file(Config.india_shape_file_folder)
+        gdf = gdf[gdf["NAME_1"] == state_id]
+        #print(json.loads(countries_gdf["geometry"].to_json()))
+        gdf = gdf.to_crs(epsg=4326)
+        #print(countries_gdf.shape)
+        return gdf["geometry"].apply(mapping).values
+
+    def get_all_indian_states(self):
+        return geopandas.read_file(Config.india_shape_file_folder)["NAME_1"].unique()
 
 if __name__ == "__main__":
     from dsba4152.utils.helpers import Helpers

@@ -1,0 +1,80 @@
+<html>
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.9/cropper.min.js" integrity="sha512-9pGiHYK23sqK5Zm0oF45sNBAX/JqbZEP7bSDHyt+nT3GddF+VFIcYNqREt0GDpmFVZI3LZ17Zu9nMMc9iktkCw==" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.9/cropper.min.css" integrity="sha512-w+u2vZqMNUVngx+0GVZYM21Qm093kAexjueWOv9e9nIeYJb1iEfiHC7Y+VvmP/tviQyA5IR32mwN/5hTEJx6Ng==" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" i ntegrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div class="container" id="app">
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="{{ url_for('static' , filename='siteimg/logo.png')}}" width="200" height="30" alt="">
+        Visualizing Activation Filters
+      </a>
+    </nav>
+    <div class="row shadow p-3 mb-5 bg-white rounded">
+      <div class="col-md-6">
+        <div class="row-fluid">
+          <img src="{{ url_for('static' , filename='data/USA_1992.png')}}" id="img" class="img-fluid" alt="Responsive image" style="display:none" crossorigin="anonymous">
+          <canvas id="img_canvas" width="1100" height="600"></canvas>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row" style="height:90%">
+          <img id="preview_img" height="100%"></img>
+        </div>
+        <div class="row">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" id="same_scale" v-model="same_scale">
+                <label for="checkbox">Same Scale?</label>
+              </div>
+            </div>
+            <button v-on:click="predict" class="btn btn-primary">
+              Predict
+              <div class="spinner-grow" v-if="loading == true" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </button>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <hr />
+      <div class="row shadow p-3 mb-5 bg-white rounded">
+        <h3 class="heading">Output of CNN layer 1 (closer to the input)</h3>
+        <img id="prediction_img_layer_a" src="{{ url_for('static' , filename='out_img/output_1.png')}}" class="img-fluid" />
+      </div>
+      <div class="row shadow p-3 mb-5 bg-white rounded">
+
+        <h3 class="heading">Output of CNN layer 8 (closer to the output)</h3>
+        <img id="prediction_img_layer_b" src="{{ url_for('static' , filename='out_img/output_8.png')}}" class="img-fluid" />
+      </div>
+
+    </div>
+
+  </div />
+  <div class="row">
+
+  </div>
+
+  </div>
+
+  <script src="{{url_for('static' , filename='scripts/app.js') }}"></script>
+  <script src="{{url_for('static' , filename='scripts/crop.js') }}"></script>
+  <link rel="stylesheet" href="{{url_for('static' , filename='css/app.css') }}">
+</body>
+
+</html>
