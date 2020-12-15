@@ -1,5 +1,5 @@
 
-
+![image](/web/static/siteimg/overall_working.gif)
 # Computer Vision : Using Satellite images to Predict Economic Indicators
 
 ## Getting Started
