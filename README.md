@@ -73,12 +73,13 @@ African countries is very rare. At current survey frequencies, we calculate that
 
 ## Project Flow
 
-![image](https://user-images.githubusercontent.com/6872080/96283614-77945980-0faa-11eb-8ac4-d1333c633f8b.png)
-
 1. Download Year wise image tars
 2. Untar the images
 3. For each of the selected country subset the image to that country
 4. Perform Data augmentation
+5. Create Kaggle Dataset
+6. Build Models
+7. Debug and refine
 
 ## Setting up
 
